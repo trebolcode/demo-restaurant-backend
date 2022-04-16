@@ -1,51 +1,38 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, FastAPI, HTTPException
 from pydantic import BaseModel
+from app.reservations.models.model import Book_Table_In
+
 
 reservations = APIRouter()
 
 
-def get_data():
-    table = [
-        {
-            "table": 12,
-            "chairs": 4,
-            "owner": "Trebol Code",
-            "date": "fecha",
-            "hour": "hora"
-        },
-        {
-            "table": 10,
-            "chairs": 6,
-            "owner": "Otra",
-            "date": "fecha",
-            "hour": "hora"
-        },
-    ]
-    return table
+from app.reservations.database.database import (
+     fetch_one_table,
+     fetch_all_tables,
+     create_table,  
+)
 
 
-def save_data(table):
-    pass
 
 
-class Book_Table_In(BaseModel):
-    table: int
-    chairs: int
-    owner: str
-    date: str
-    hour: str
 
 
 @reservations.get(
     path="/tables"
 )
-def get_all_tables():
-    return get_data()
+async def get_all_tables():
+    response = await fetch_all_tables()
+    return response
+
+
 
 
 @reservations.post(
-    path="/tables"
+    path="/tables",
+    response_model=Book_Table_In
 )
-def book_table(table: Book_Table_In):
-    save_data(table)
-    return table
+async def post_reservations(newtable:Book_Table_In):
+    response = await create_table(newtable.dict())
+    if response:
+        return response
+    raise HTTPException(400, "Something went wrong / Bad Request")
