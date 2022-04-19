@@ -1,51 +1,23 @@
 from fastapi import APIRouter
-from pydantic import BaseModel
 
-reservations = APIRouter()
+# Schema
+import app.reservations.schemas as schema
 
+# Model
+import app.reservations.models as model
 
-def get_data():
-    table = [
-        {
-            "table": 12,
-            "chairs": 4,
-            "owner": "Trebol Code",
-            "date": "fecha",
-            "hour": "hora"
-        },
-        {
-            "table": 10,
-            "chairs": 6,
-            "owner": "Otra",
-            "date": "fecha",
-            "hour": "hora"
-        },
-    ]
-    return table
+router = APIRouter()
 
 
-def save_data(table):
-    pass
-
-
-class Book_Table_In(BaseModel):
-    table: int
-    chairs: int
-    owner: str
-    date: str
-    hour: str
-
-
-@reservations.get(
+@router.get(
     path="/tables"
 )
 def get_all_tables():
-    return get_data()
+    return {"msg": "info about tables"}
 
 
-@reservations.post(
+@router.post(
     path="/tables"
 )
-def book_table(table: Book_Table_In):
-    save_data(table)
+def book_table(table: schema.Book_Table_In):
     return table
