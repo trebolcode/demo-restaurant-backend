@@ -8,3 +8,12 @@
 - Models: Input/Output
 - Database: Postgres/SQLAlchemy/MongoDB/pymongo
 - Auth: JWT Authentication
+
+## API's
+
+- Reservation
+- Inventory
+- Delivery
+- Suscribe
+- Menu
+- Order
