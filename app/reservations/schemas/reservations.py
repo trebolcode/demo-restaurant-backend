@@ -1,9 +1,17 @@
+from xmlrpc.client import boolean
 from pydantic import BaseModel
 
 
-class Book_Table_In(BaseModel):
-    table: int
-    chairs: int
-    owner: str
-    date: str
-    hour: str
+class BookTableInput(BaseModel):
+    id_user :int
+    id_table :int
+    starts_at : str
+    ends_at : str
+    is_available : bool
+    event :str
+
+    class Config:
+        orm_mode = True
+
+class BookTable(BookTableInput):
+    id:int

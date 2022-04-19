@@ -1,0 +1,30 @@
+version: "3"
+services:
+  api:
+    container_name: dev_api_restaurant
+    restart: always
+    build:
+      context: .
+      dockerfile: ./compose/dev/Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/usr/src/app
+    env_file:
+      - ./.env
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: db_postgres_restaurant
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    env_file:
+      - ./.env
+    volumes:
+      - base_postgres_db:/var/lib/postgresql/data
+
+volumes:
+  base_postgres_db:
