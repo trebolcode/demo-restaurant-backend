@@ -25,7 +25,7 @@ def get_application():
     )
 
     app.include_router(reservations.router)
-    # app.include_router(users.router)
+    app.include_router(users.router)
     
     return app
 
