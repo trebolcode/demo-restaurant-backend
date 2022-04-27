@@ -24,7 +24,7 @@ This file is required for configuration.
 | POSTGRES_PASSWORD= | trebolcode123 |
 | POSTGRES_DB=       | trebolcode_db |
 
-* NOTE: Never use these values for production!
+- NOTE: Never use these values for production!
 
 ## Virtual Enviroment
 
@@ -77,5 +77,6 @@ Execute file create_tables.py:
 - Suscribe
 - Menu
 - Order
+- Users
 
-## Version 0.2.0
+## Version 0.2.1

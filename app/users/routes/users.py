@@ -1,5 +1,5 @@
 from typing import Optional, List
-from fastapi import APIRouter,status,Depends
+from fastapi import APIRouter, status, Depends
 
 # Database
 from sqlalchemy.orm import Session
@@ -18,14 +18,29 @@ router = APIRouter(tags=["Users"])
 @router.get(
     path="/users",
     status_code=status.HTTP_200_OK,
-    response_model=List[schemas.Users],
+    response_model=List[schemas.UsersOut],
 )
 def get_all_users(db: Session = Depends(get_db)):
     """
     Documentation:
+    Return all users.
     """
     users = db.query(models.Users).all()
     return users
+
+
+@router.get(
+    path="/users/{user_id}",
+    status_code=status.HTTP_200_OK,
+    response_model=schemas.UsersOut,
+)
+def get_an_user(user_id: int, db: Session = Depends(get_db)):
+    """
+    Documentation:
+    Return only one user by ID.
+    """
+    user = db.query(models.Users).filter_by(id=user_id).first()
+    return user
 
 
 @router.post(
@@ -33,11 +48,11 @@ def get_all_users(db: Session = Depends(get_db)):
     status_code=status.HTTP_201_CREATED,
     response_model=schemas.Users,
 )
-def create_user(reservation:schemas.Users,db: Session = Depends(get_db),):
+def create_user(user: schemas.UsersIn, db: Session = Depends(get_db),):
     """
     Documentation:
     """
-    new_User = models.Users(**reservation.dict())
+    new_User = models.Users(**user.dict())
     db.add(new_User)
     db.commit()
     db.refresh(new_User)
