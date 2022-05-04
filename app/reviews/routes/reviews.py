@@ -30,7 +30,7 @@ def get_all_reviews(db: Session = Depends(get_db)):
 @router.post(
     path="/reviews",
     status_code=status.HTTP_201_CREATED,
-    # response_model=schemas.ReviewOut,
+    response_model=schemas.ReviewOut,
 )
 def make_review(review: schemas.ReviewIn, db: Session = Depends(get_db),):
     """
