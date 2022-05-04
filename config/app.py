@@ -4,6 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 # Routes
 from app.reservations.routes import reservations
 from app.users.routes import users
+from app.reviews.routes import reviews
+
 
 def get_application():
 
@@ -26,7 +28,9 @@ def get_application():
 
     app.include_router(reservations.router)
     app.include_router(users.router)
-    
+    app.include_router(reviews.router)
+
     return app
+
 
 application = get_application()
