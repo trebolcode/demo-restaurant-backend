@@ -50,6 +50,12 @@ Second, run the container
 
 And if you want to exit you can use control+C.
 
+## Delete tables:
+
+If you need to delete data, can use this command:
+
+`docker-compose -f Developer.yml down --remove-orphans -v`
+
 ## Database:
 
 This API works with Postgres.
@@ -79,4 +85,4 @@ Execute file create_tables.py:
 - Order
 - Users
 
-## Version 0.2.1
+## Version 0.2.2
