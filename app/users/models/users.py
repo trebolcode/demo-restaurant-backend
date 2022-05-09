@@ -4,7 +4,7 @@ from sqlalchemy import String, Boolean, Integer, Column, Text, DateTime
 
 
 class Users(Base):
-    __tablename__ = 'users'
+    __tablename__ = 'Users'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(225), nullable=False)
     last_name = Column(String(225), nullable=False)

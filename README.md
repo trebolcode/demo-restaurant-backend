@@ -64,6 +64,10 @@ For only one time you need create tables in database:
 
 `docker exec -it dev_api_restaurant bash`
 
+If you are using windows use:
+
+`winpty docker exec -it dev_api_restaurant bash`
+
 Execute file create_tables.py:
 
 `python3 create_tables.py`

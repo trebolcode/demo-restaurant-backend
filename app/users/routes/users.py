@@ -46,7 +46,7 @@ def get_an_user(user_id: int, db: Session = Depends(get_db)):
 @router.post(
     path="/users",
     status_code=status.HTTP_201_CREATED,
-    response_model=schemas.Users,
+    response_model=schemas.UsersOut,
 )
 def create_user(user: schemas.UsersIn, db: Session = Depends(get_db),):
     """

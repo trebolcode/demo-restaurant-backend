@@ -4,7 +4,7 @@ from sqlalchemy import String, Boolean, Integer, Column, Text, DateTime
 
 
 class Reservations(Base):
-    __tablename__ = 'reservations'
+    __tablename__ = 'Reservations'
     id = Column(Integer, primary_key=True, nullable=False)
     id_user = Column(Integer, nullable=False)
     id_table = Column(Integer, nullable=False)

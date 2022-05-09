@@ -10,6 +10,8 @@ import app.reviews.schemas.reviews as schemas
 
 # Model
 import app.reviews.models.reviews as models
+import app.users.models.users as model_Users
+
 
 router = APIRouter(tags=["Reviews"])
 
@@ -26,6 +28,31 @@ def get_all_reviews(db: Session = Depends(get_db)):
     reviews = db.query(models.Reviews).all()
     return reviews
 
+
+@router.get(
+    path="/reviews/{id_review}",
+    status_code=status.HTTP_200_OK,
+    #response_model=schemas.ReviewOutUser,
+)
+def get_a_review(id_review:int,db: Session = Depends(get_db)):
+    """
+    Documentation:
+    """
+    #review = db.query(models.Reviews).filter(models.Reviews.id==id_review).first()
+
+#    reviews = db.query(models.Reviews,model_Users.Users).join(models.Reviews,models.Reviews.id_user==model_Users.Users.id,isouter=True).all()
+    reviews = db.query(
+            models.Reviews.id,
+            models.Reviews.title,
+            models.Reviews.rating,
+            models.Reviews.comments,
+            models.Reviews.created_at,
+            model_Users.Users.name,
+            model_Users.Users.last_name,
+        ).join(models.Reviews,models.Reviews.id_user==model_Users.Users.id,isouter=True).filter(models.Reviews.id==id_review).first()
+
+
+    return reviews
 
 @router.post(
     path="/reviews",
