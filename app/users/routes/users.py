@@ -20,12 +20,16 @@ router = APIRouter(tags=["Users"])
     status_code=status.HTTP_200_OK,
     response_model=List[schemas.UsersOut],
 )
-def get_all_users(db: Session = Depends(get_db)):
+def get_all_users(
+        limit: int = 10,
+        skip: int = 0,
+        db: Session = Depends(get_db),
+):
     """
     Documentation:
     Return all users.
     """
-    users = db.query(models.Users).all()
+    users = db.query(models.Users).limit(limit).offset(skip).all()
     return users
 
 

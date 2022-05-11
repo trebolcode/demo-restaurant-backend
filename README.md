@@ -2,13 +2,14 @@
 
 This is a collaborative learning project.
 
-| Tech       | Information                                       |
-| ---------- | ------------------------------------------------- |
-| Python     | [Documentation](https://www.python.org/doc/)      |
-| Uvicorn    | [Documentation](https://www.uvicorn.org/)         |
-| FastAPI    | [Documentation](https://fastapi.tiangolo.com/)    |
-| Postgres   | [Documentation](https://www.postgresql.org/docs/) |
-| SQLAlchemy | [Documentation](https://www.sqlalchemy.org/)      |
+| Tech       | Information                                           |
+| ---------- | ----------------------------------------------------- |
+| Python     | [Documentation](https://www.python.org/doc/)          |
+| Uvicorn    | [Documentation](https://www.uvicorn.org/)             |
+| FastAPI    | [Documentation](https://fastapi.tiangolo.com/)        |
+| Postgres   | [Documentation](https://www.postgresql.org/docs/)     |
+| Pydantic   | [Documentation](https://pydantic-docs.helpmanual.io/) |
+| SQLAlchemy | [Documentation](https://www.sqlalchemy.org/)          |
 
 ## Configuration of .env
 

@@ -9,5 +9,5 @@ class Users(Base):
     name = Column(String(225), nullable=False)
     last_name = Column(String(225), nullable=False)
     email = Column(String(225), nullable=False)
-    phone = Column(String(225), nullable=False)
+    phone = Column(Integer, nullable=False)
     password = Column(String(225), nullable=False)
