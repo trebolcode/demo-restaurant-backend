@@ -1,6 +1,6 @@
 # structure db
 from config.database import Base
-from sqlalchemy import String, Boolean, Integer, Column, Text, DateTime
+from sqlalchemy import String, Boolean, Integer, Column, Text, DateTime, BIGINT
 
 
 class Users(Base):
@@ -9,5 +9,5 @@ class Users(Base):
     name = Column(String(225), nullable=False)
     last_name = Column(String(225), nullable=False)
     email = Column(String(225), nullable=False)
-    phone = Column(Integer, nullable=False)
+    phone = Column(BIGINT, nullable=False)
     password = Column(String(225), nullable=False)
